@@ -27,8 +27,6 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-12">
-        
-        {/* --- Logo --- */}
         <div className="flex-shrink-0 relative z-[1001]">
           <Link href="/">
             <Image
@@ -42,26 +40,40 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* --- Desktop Menu --- */}
         <div className="hidden md:flex gap-8 items-center text-[14px] font-medium">
-          <Link href="/" className="text-slate-300 hover:text-white transition-colors">Home</Link>
-          <Link href="/courses" className="text-slate-300 hover:text-white transition-colors">Courses</Link>
-          <Link href="/profile" className="text-slate-300 hover:text-white transition-colors">Profile</Link>
-          
+          <Link
+            href="/"
+            className="text-slate-300 hover:text-white transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            href="/courses"
+            className="text-slate-300 hover:text-white transition-colors"
+          >
+            Courses
+          </Link>
+          <Link
+            href="/profile"
+            className="text-slate-300 hover:text-white transition-colors"
+          >
+            Profile
+          </Link>
+
           <div className="flex gap-4 ml-4 items-center">
-            <Link href="/signin" className="text-slate-300 hover:text-white">Sign In</Link>
-            <Button
-              as={Link}
-              href="/signup"
-              size="sm"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold px-5 rounded-full"
-            >
-              Get Started
-            </Button>
+            <Link href={"/signin"}>
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+                Sign In
+              </Button>
+            </Link>
+            <Link href={"/signup"}>
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+                Sign Up
+              </Button>
+            </Link>
           </div>
         </div>
 
-        {/* --- Mobile Menu Button --- */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden relative z-[1001] text-white text-2xl p-2 outline-none"
@@ -74,38 +86,38 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="fixed inset-0 top-0 left-0 w-full h-screen bg-[#030712] z-[1000] flex flex-col pt-24 px-8 md:hidden overflow-y-auto">
             <div className="flex flex-col gap-6 text-center">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-xl font-medium text-slate-200 border-b border-white/5 pb-4"
               >
                 Home
               </Link>
-              <Link 
-                href="/courses" 
+              <Link
+                href="/courses"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-xl font-medium text-slate-200 border-b border-white/5 pb-4"
               >
                 Courses
               </Link>
-              <Link 
-                href="/profile" 
+              <Link
+                href="/profile"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-xl font-medium text-slate-200 border-b border-white/5 pb-4"
               >
                 Profile
               </Link>
-              
+
               <div className="flex flex-col gap-4 mt-6">
-                <Link 
-                  href="/signin" 
+                <Link
+                  href="/signin"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="py-3 rounded-xl border border-white/10 text-white font-semibold"
                 >
                   Sign In
                 </Link>
-                <Link 
-                  href="/signup" 
+                <Link
+                  href="/signup"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold"
                 >
