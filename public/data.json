@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "title": "Complete Web Development Bootcamp",
+        "instructor": "John Doe",
+        "duration": "20 hours",
+        "rating": 4.8,
+        "level": "Beginner",
+        "description": "Learn full-stack web development from scratch.",
+        "image": "https://i.pinimg.com/1200x/30/e1/2c/30e12c666ee02e1d8191cc74c35b9b4e.jpg",
+        "category": "Development"
+    },
+    {
+        "id": 2,
+        "title": "Advanced UI/UX Design Mastery",
+        "instructor": "Sarah Jenkins",
+        "duration": "15 hours",
+        "rating": 4.9,
+        "level": "Intermediate",
+        "description": "Master Figma, user psychology, and high-fidelity prototyping.",
+        "image": "https://i.pinimg.com/736x/6d/54/75/6d54759dc968dcb9c961481b6253fd7e.jpg",
+        "category": "Design"
+    },
+    {
+        "id": 3,
+        "title": "Data Science & Machine Learning with Python",
+        "instructor": "Dr. Alan Turing",
+        "duration": "45 hours",
+        "rating": 4.7,
+        "level": "Expert",
+        "description": "Build predictive models and neural networks using real-world datasets.",
+        "image": "https://i.pinimg.com/736x/77/61/84/7761846bacfedd20fa53630ea8287999.jpg",
+        "category": "Data Science"
+    },
+    {
+        "id": 4,
+        "title": "Digital Marketing Strategy 2026",
+        "instructor": "Emily Chen",
+        "duration": "12 hours",
+        "rating": 4.6,
+        "level": "Beginner",
+        "description": "Dominate SEO, SEM, and social media advertising in the modern era.",
+        "image": "https://i.pinimg.com/736x/ba/6d/aa/ba6daaad53a7f84108b031bd64745dd7.jpg",
+        "category": "Marketing"
+    },
+    {
+        "id": 5,
+        "title": "Ethical Hacking & Cybersecurity",
+        "instructor": "Marcus Vane",
+        "duration": "30 hours",
+        "rating": 4.8,
+        "level": "Intermediate",
+        "description": "Learn penetration testing and how to secure enterprise networks.",
+        "image": "https://i.pinimg.com/736x/7f/c6/a5/7fc6a53598c39204ecef0d7480a23db8.jpg",
+        "category": "IT & Software"
+    },
+    {
+        "id": 6,
+        "title": "The Art of Professional Photography",
+        "instructor": "Julianne Moore",
+        "duration": "8 hours",
+        "rating": 4.5,
+        "level": "Beginner",
+        "description": "Understand lighting, composition, and post-processing in Lightroom.",
+        "image": "https://i.pinimg.com/736x/8e/f9/d2/8ef9d2c1f2bbd162440d185081d2b12f.jpg",
+        "category": "Photography"
+    },
+    {
+        "id": 7,
+        "title": "Financial Analysis and Stock Trading",
+        "instructor": "Robert Sterling",
+        "duration": "25 hours",
+        "rating": 4.4,
+        "level": "Intermediate",
+        "description": "Analyze market trends and manage portfolios like a pro.",
+        "image": "https://i.pinimg.com/736x/6c/05/e7/6c05e74c7aca81ff3d32a11fed4aea04.jpg",
+        "category": "Finance"
+    },
+    {
+        "id": 8,
+        "title": "React.js: The Ultimate Guide",
+        "instructor": "Samantha Reed",
+        "duration": "22 hours",
+        "rating": 4.9,
+        "level": "Intermediate",
+        "description": "Master hooks, state management, and server-side rendering.",
+        "image": "https://i.pinimg.com/736x/a9/b8/38/a9b838d0919a74ab02a2c6a7d2b83416.jpg",
+        "category": "Development"
+    },
+    {
+        "id": 9,
+        "title": "Public Speaking & Leadership",
+        "instructor": "Gregory Hayes",
+        "duration": "5 hours",
+        "rating": 4.7,
+        "level": "All Levels",
+        "description": "Overcome stage fright and lead teams with effective communication.",
+        "image": "https://i.pinimg.com/736x/7c/1a/38/7c1a387d5cfcbf423a58d99962ee5762.jpg",
+        "category": "Personal Development"
+    },
+    {
+        "id": 10,
+        "title": "iOS App Development with Swift",
+        "instructor": "Kevin Smith",
+        "duration": "35 hours",
+        "rating": 4.8,
+        "level": "Expert",
+        "description": "Build high-performance native iPhone apps from scratch.",
+        "image": "https://i.pinimg.com/736x/d8/5c/73/d85c7306672e6e23370399b2d6cfc1cd.jpg",
+        "category": "Development"
+    }
+]
