@@ -5,8 +5,12 @@ import { Check } from "@gravity-ui/icons";
 import { Button, Form, Input } from "@heroui/react";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const router = useRouter();
   const userSignUp = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -14,7 +18,21 @@ const SignUp = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
-    console.log("User Registration info: ", name, email, photo, password);
+    // console.log("User Registration info: ", name, email, photo, password);
+    const { data, error } = await authClient.signUp.email({
+      name,
+      email,
+      photo,
+      password,
+    });
+    if (!error) {
+      toast.success("User Registration Successfully!");
+      router.push("/");
+    } else {
+      toast.error("User Registration Failed");
+    }
+
+    console.log("User Registraion: ", data, error);
   };
   return (
     <div className="min-h-screen flex items-center justify-center  px-6 py-24 relative overflow-hidden">
@@ -41,7 +59,7 @@ const SignUp = () => {
           {/* Email Field */}
           <div className="flex flex-col gap-2">
             <Input
-              isRequired
+              required
               label="Name"
               labelPlacement="outside"
               name="name"
@@ -58,7 +76,7 @@ const SignUp = () => {
           </div>
           <div className="flex flex-col gap-2">
             <Input
-              isRequired
+              required
               label="Email"
               labelPlacement="outside"
               name="email"
@@ -81,7 +99,7 @@ const SignUp = () => {
           </div>
           <div className="flex flex-col gap-2">
             <Input
-              isRequired
+              required
               label="photo"
               labelPlacement="outside"
               name="photo"
@@ -106,7 +124,7 @@ const SignUp = () => {
           {/* Password Field */}
           <div className="flex flex-col gap-2">
             <Input
-              isRequired
+              required
               label="Password"
               labelPlacement="outside"
               name="password"
@@ -151,7 +169,9 @@ const SignUp = () => {
         </Form>
         <h2 className="text-xl font-bold text-white text-center mt-5">Or</h2>
         <br />
-        <Button className={"w-full"}><FaGoogle /> Sing Up Google</Button>
+        <Button className={"w-full"}>
+          <FaGoogle /> Sing Up Google
+        </Button>
 
         {/* Footer Link */}
         <p className="text-center mt-8 text-slate-500 text-sm">
