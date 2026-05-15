@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaXmark } from "react-icons/fa6";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,6 +18,14 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const userData = authClient.useSession();
+  const user = userData.data?.user;
+  // console.log(user);
+
+  const signOut = async () => {
+    await authClient.signOut();
+  };
 
   return (
     <nav
@@ -32,9 +41,8 @@ const Navbar = () => {
             <Image
               src="/logo.png"
               alt="SkillNest logo"
-              width={500}
-              height={500}
-             
+              width={300}
+              height={300}
               priority
             />
           </Link>
@@ -60,18 +68,36 @@ const Navbar = () => {
             Profile
           </Link>
 
-          <div className="flex gap-4 ml-4 items-center">
-            <Link href={"/signin"}>
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
-                Sign In
+          {!user && (
+            <div className="flex gap-4 ml-4 items-center">
+              <Link href={"/signin"}>
+                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href={"/signup"}>
+                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
+          )}
+          {user && (
+            <div className="flex justify-between gap-3 items-center">
+              <Avatar>
+                <Avatar.Image
+                  alt={user?.name}
+                  src={user?.image}
+                  referrerPolicy="no-reffer"
+                />
+                <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+              </Avatar>
+
+              <Button onClick={signOut} variant="danger">
+                Sign Out
               </Button>
-            </Link>
-            <Link href={"/signup"}>
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
-                Sign Up
-              </Button>
-            </Link>
-          </div>
+            </div>
+          )}
         </div>
 
         <button
@@ -108,22 +134,40 @@ const Navbar = () => {
                 Profile
               </Link>
 
-              <div className="flex flex-col gap-4 mt-6">
-                <Link
-                  href="/signin"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="py-3 rounded-xl border border-white/10 text-white font-semibold"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold"
-                >
-                  Get Started
-                </Link>
-              </div>
+              {!user && (
+                <div className="flex flex-col gap-4 mt-6">
+                  <Link
+                    href="/signin"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="py-3 rounded-xl border border-white/10 text-white font-semibold"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/signup"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              )}
+              {user && (
+                <div className="flex justify-between gap-3 items-center">
+                  <Avatar>
+                    <Avatar.Image
+                      alt={user?.name}
+                      src={user?.image}
+                      referrerPolicy="no-reffer"
+                    />
+                    <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+                  </Avatar>
+
+                  <Button onClick={signOut} variant="danger">
+                    Sign Out
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         )}
