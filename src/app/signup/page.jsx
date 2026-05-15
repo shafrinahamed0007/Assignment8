@@ -128,7 +128,7 @@ const SignUp = () => {
             }}
           />
 
-          <div className="flex flex-col gap-3 pt-2">
+          <div className="flex  gap-3 pt-2">
             <Button
               type="submit"
               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform"
