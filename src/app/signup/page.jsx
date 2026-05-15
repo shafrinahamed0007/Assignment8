@@ -28,7 +28,7 @@ const SignUp = () => {
 
     if (!error) {
       toast.success("User Registration Successful!");
-      router.push("/");
+      router.push("/signin");
     } else {
       toast.error(error.message || "User Registration Failed");
     }
