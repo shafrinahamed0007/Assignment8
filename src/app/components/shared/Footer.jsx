@@ -34,9 +34,9 @@ const Footer = () => {
               <Image
                 src="/logo.png"
                 alt="pixgen logo"
-                width={300}
-                height={90}
-                className="w-[220px] md:w-[280px] h-auto object-contain brightness-125 contrast-110"
+                width={180} // Adjusted to a more reasonable logo size
+                height={60}  // Adjusted to a more reasonable logo size
+                className="object-contain brightness-125 contrast-110 h-auto w-auto" // Added h-auto and w-auto here
                 priority
               />
             </Link>
@@ -71,30 +71,9 @@ const Footer = () => {
                 Product
               </h3>
               <ul className="space-y-4 text-[15px] text-slate-400">
-                <li>
-                  <Link
-                    href="/generate"
-                    className="hover:text-white transition-colors"
-                  >
-                    AI Generator
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/all-photos"
-                    className="hover:text-white transition-colors"
-                  >
-                    Showcase
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/pricing"
-                    className="hover:text-white transition-colors"
-                  >
-                    Pricing Plan
-                  </Link>
-                </li>
+                <li><Link href="/generate" className="hover:text-white transition-colors">AI Generator</Link></li>
+                <li><Link href="/all-photos" className="hover:text-white transition-colors">Showcase</Link></li>
+                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing Plan</Link></li>
               </ul>
             </div>
 
@@ -104,39 +83,10 @@ const Footer = () => {
                 Company
               </h3>
               <ul className="space-y-4 text-[15px] text-slate-400">
-                <li>
-                  <Link
-                    href="/about"
-                    className="hover:text-white transition-colors"
-                  >
-                    Our Story
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="hover:text-white transition-colors"
-                  >
-                    Get in Touch
-                  </Link>
-                </li>
-                {/* Policy Links in Grid */}
-                <li>
-                  <Link
-                    href="/terms"
-                    className="hover:text-white transition-colors"
-                  >
-                    Terms & Conditions
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="hover:text-white transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
+                <li><Link href="/about" className="hover:text-white transition-colors">Our Story</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">Get in Touch</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
+                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
@@ -162,31 +112,13 @@ const Footer = () => {
         <div className="mt-16 border-t border-white/5 pt-10">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <p className="text-[13px] text-slate-500">
-              © {currentYear}{" "}
-              <span className="font-bold text-slate-300">pixgen</span>. All
-              rights reserved.
+              © {currentYear} <span className="font-bold text-slate-300">pixgen</span>. All rights reserved.
             </p>
 
-            {/* Legal Links in Bottom Bar */}
             <div className="flex items-center gap-8 text-[13px] font-medium text-slate-500">
-              <Link
-                href="/privacy"
-                className="hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="hover:text-white transition-colors"
-              >
-                Terms & Conditions
-              </Link>
-              <Link
-                href="/contact"
-                className="hover:text-white transition-colors"
-              >
-                Support
-              </Link>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
+              <Link href="/contact" className="hover:text-white transition-colors">Support</Link>
             </div>
           </div>
         </div>

@@ -32,9 +32,9 @@ const Navbar = () => {
             <Image
               src="/logo.png"
               alt="SkillNest logo"
-              width={130}
-              height={35}
-              className="w-[110px] md:w-[130px] h-auto brightness-110"
+              width={500}
+              height={500}
+             
               priority
             />
           </Link>
