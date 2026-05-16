@@ -1,15 +1,23 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Avatar, Button } from "@heroui/react";
+import {
+  Avatar,
+  Button,
+  Navbar as HeroNavbar,
+  NavbarContent,
+  NavbarItem,
+} from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaXmark } from "react-icons/fa6";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,12 +27,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const userData = authClient.useSession();
-  const user = userData.data?.user;
-  // console.log(user);
+  const { data, isPending } = authClient.useSession();
+  const user = data?.user;
 
   const signOut = async () => {
-    await authClient.signOut();
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/signin");
+        },
+      },
+    });
   };
 
   return (
@@ -36,141 +49,141 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-12">
+        {/* Logo */}
         <div className="flex-shrink-0 relative z-[1001]">
           <Link href="/">
             <Image
               src="/logo.png"
               alt="SkillNest logo"
-              width={300}
-              height={300}
+              width={150} // সাইজটা একটু এডজাস্ট করে নিন
+              height={40}
               priority
             />
           </Link>
         </div>
 
-        <div className="hidden md:flex gap-8 items-center text-[14px] font-medium">
-          <Link
-            href="/"
-            className="text-slate-300 hover:text-white transition-colors"
-          >
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-8 items-center text-[14px] font-medium text-slate-300">
+          <Link href="/" className="hover:text-white transition-colors">
             Home
           </Link>
-          <Link
-            href="/courses"
-            className="text-slate-300 hover:text-white transition-colors"
-          >
+          <Link href="/courses" className="hover:text-white transition-colors">
             Courses
           </Link>
-          <Link
-            href="/profile"
-            className="text-slate-300 hover:text-white transition-colors"
-          >
+          <Link href="/profile" className="hover:text-white transition-colors">
             Profile
           </Link>
 
-          {!user && (
-            <div className="flex gap-4 ml-4 items-center">
-              <Link href={"/signin"}>
-                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+          {!user ? (
+            <div className="flex gap-4 ml-4">
+              <Link href="/signin">
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-xl"
+                >
                   Sign In
                 </Button>
               </Link>
-              <Link href={"/signup"}>
-                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12 rounded-xl shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition-transform">
+              <Link href="/signup">
+                <Button
+                  size="sm"
+                  variant="bordered"
+                  className="text-white border-white/20"
+                >
                   Sign Up
                 </Button>
               </Link>
             </div>
-          )}
-          {user && (
-            <div className="flex justify-between gap-3 items-center">
-              <Avatar>
-                <Avatar.Image
-                  alt={user?.name}
-                  src={user?.image}
-                  referrerPolicy="no-reffer"
-                />
-                <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
-              </Avatar>
-
-              <Button onClick={signOut} variant="danger">
+          ) : (
+            <div className="flex items-center gap-4 border-l border-white/10 pl-4">
+              <Avatar
+                
+                as={Link}
+                href="/profile"
+                className="transition-transform w-8 h-8"
+                src={user.image || ""}
+                name={user.name?.[0]}
+              />
+              <Button size="sm" color="danger" variant="flat" onClick={signOut}>
                 Sign Out
               </Button>
             </div>
           )}
         </div>
 
+        {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden relative z-[1001] text-white text-2xl p-2 outline-none"
-          aria-label="Toggle menu"
+          className="md:hidden relative z-[1001] text-white text-2xl p-2"
         >
           {isMobileMenuOpen ? <FaXmark /> : <FaBars />}
         </button>
 
-        {/* --- Mobile Menu Overlay --- */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 top-0 left-0 w-full h-screen bg-[#030712] z-[1000] flex flex-col pt-24 px-8 md:hidden overflow-y-auto">
-            <div className="flex flex-col gap-6 text-center">
+        {/* Mobile Menu Overlay */}
+        <div
+          className={`fixed inset-0 bg-[#030712] z-[1000] flex flex-col pt-24 px-8 transition-transform duration-300 md:hidden ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex flex-col gap-6 text-center">
+            {["Home", "Courses", "Profile"].map((item) => (
               <Link
-                href="/"
+                key={item}
+                href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-xl font-medium text-slate-200 border-b border-white/5 pb-4"
               >
-                Home
+                {item}
               </Link>
-              <Link
-                href="/courses"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-xl font-medium text-slate-200 border-b border-white/5 pb-4"
-              >
-                Courses
-              </Link>
-              <Link
-                href="/profile"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-xl font-medium text-slate-200 border-b border-white/5 pb-4"
-              >
-                Profile
-              </Link>
+            ))}
 
-              {!user && (
-                <div className="flex flex-col gap-4 mt-6">
-                  <Link
-                    href="/signin"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="py-3 rounded-xl border border-white/10 text-white font-semibold"
+            {!user ? (
+              <div className="flex flex-col gap-4 mt-6">
+                <Link href="/signin" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    fullWidth
+                    variant="bordered"
+                    className="text-white border-white/10 h-12"
                   >
                     Sign In
-                  </Link>
-                  <Link
-                    href="/signup"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold"
+                  </Button>
+                </Link>
+                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    fullWidth
+                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold h-12"
                   >
                     Sign Up
-                  </Link>
-                </div>
-              )}
-              {user && (
-                <div className="flex justify-between gap-3 items-center">
-                  <Avatar>
-                    <Avatar.Image
-                      alt={user?.name}
-                      src={user?.image}
-                      referrerPolicy="no-reffer"
-                    />
-                    <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
-                  </Avatar>
-
-                  <Button onClick={signOut} variant="danger">
-                    Sign Out
                   </Button>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center gap-6 mt-6">
+                <div className="flex items-center gap-3">
+                  <Avatar
+                    src={user.image || ""}
+                    name={user.name?.[0]}
+                    size="lg"
+                   
+                  />
+                  <div className="text-left">
+                    <p className="text-white font-bold">{user.name}</p>
+                    <p className="text-tiny text-slate-400">{user.email}</p>
+                  </div>
                 </div>
-              )}
-            </div>
+                <Button
+                  fullWidth
+                  color="danger"
+                  variant="danger"
+                  onClick={signOut}
+                  className="h-12 font-bold"
+                >
+                  Sign Out
+                </Button>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

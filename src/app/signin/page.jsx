@@ -34,7 +34,7 @@ const SignIn = () => {
     });
   };
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden bg-black">
+    <div className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden ">
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-600/10 blur-[120px] -z-10 rounded-full" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 blur-[120px] -z-10 rounded-full" />
       <div className="w-full max-w-md bg-[#030712] backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl">

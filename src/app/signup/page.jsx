@@ -41,7 +41,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden bg-black">
+    <div className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden ">
       {/* Background Decor */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-600/10 blur-[120px] -z-10 rounded-full" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/10 blur-[120px] -z-10 rounded-full" />
