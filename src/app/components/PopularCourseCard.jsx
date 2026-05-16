@@ -33,7 +33,7 @@ const PopularCourseCard = ({ popularCourse }) => {
         </div>
       </div>
 
-      <Link href={""}>
+      <Link href={`/courses/${popularCourse.id}`}>
       <Button className={"w-full"}>View Detalis</Button>
       </Link>
     </Card>
