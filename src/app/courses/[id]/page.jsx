@@ -2,7 +2,7 @@ import { Card } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
 import { FaStar } from "react-icons/fa6";
-import { FiUser, FiClock, FiLayers, FiInfo } from "react-icons/fi"; // নতুন কিছু আইকন যোগ করা হয়েছে
+import { FiUser, FiClock, FiLayers, FiInfo } from "react-icons/fi"; 
 
 const CourseDetails = async ({ params }) => {
   const { id } = await params;
