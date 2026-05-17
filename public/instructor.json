@@ -1,112 +1,67 @@
 [
-  {
-    "instructor_id": "INS-01",
-    "name": "John Doe",
-    "designation": "Senior Full-Stack Developer",
-    "organization": "TechAcademy",
-    "experience": "8+ Years",
-    "bio": "Passionate about building scalable web applications and teaching modern web technologies to beginners.",
-    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80",
-    "skills": ["HTML", "CSS", "JavaScript", "Node.js", "MongoDB"],
-    "rating": 4.8
-  },
-  {
-    "instructor_id": "INS-02",
-    "name": "Sarah Jenkins",
-    "designation": "Lead UI/UX Product Designer",
-    "organization": "Design Studio X",
-    "experience": "6+ Years",
-    "bio": "Helping companies build intuitive digital products by blending user psychology with beautiful design layouts.",
-    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
-    "skills": ["Figma", "User Research", "Wireframing", "Prototyping"],
-    "rating": 4.9
-  },
-  {
-    "instructor_id": "INS-03",
-    "name": "Dr. Alan Turing",
-    "designation": "Data Scientist & AI Researcher",
-    "organization": "Quantum Labs",
-    "experience": "12+ Years",
-    "bio": "Specialized in machine learning algorithms, deep learning, and predictive analytics for enterprise data.",
-    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-    "skills": ["Python", "Machine Learning", "TensorFlow", "Pandas"],
-    "rating": 4.7
-  },
-  {
-    "instructor_id": "INS-04",
-    "name": "Emily Chen",
-    "designation": "Growth Marketing Strategist",
-    "organization": "Media Buzz",
-    "experience": "5+ Years",
-    "bio": "Expert in driving organic traffic and running high-ROI paid ad campaigns for e-commerce brands.",
-    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&q=80",
-    "skills": ["SEO", "Google Ads", "Facebook Pixel", "Content Strategy"],
-    "rating": 4.6
-  },
-  {
-    "instructor_id": "INS-05",
-    "name": "Marcus Vane",
-    "designation": "Cybersecurity Consultant",
-    "organization": "SecOps Global",
-    "experience": "10+ Years",
-    "bio": "Certified ethical hacker helping startups and enterprises identify network vulnerabilities and secure data.",
-    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
-    "skills": ["Penetration Testing", "Linux", "Network Security", "Wireshark"],
-    "rating": 4.8
-  },
-  {
-    "instructor_id": "INS-06",
-    "name": "Julianne Moore",
-    "designation": "Commercial & Portrait Photographer",
-    "organization": "Freelance Visuals",
-    "experience": "7+ Years",
-    "bio": "Capturing stories through the lens. Expert in lighting setups, raw composition, and Adobe Lightroom workflow.",
-    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
-    "skills": ["Studio Lighting", "Portraiture", "Adobe Lightroom", "Photoshop"],
-    "rating": 4.5
-  },
-  {
-    "instructor_id": "INS-07",
-    "name": "Robert Sterling",
-    "designation": "Portfolio Manager & Financial Analyst",
-    "organization": "Apex Capital",
-    "experience": "9+ Years",
-    "bio": "Teaching risk management and technical analysis to help retail investors trade responsibly in stock markets.",
-    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80",
-    "skills": ["Technical Analysis", "Risk Management", "Macroeconomics"],
-    "rating": 4.4
-  },
-  {
-    "instructor_id": "INS-08",
-    "name": "Samantha Reed",
-    "designation": "Frontend Architect",
-    "organization": "DevCorp",
-    "experience": "6+ Years",
-    "bio": "Frontend enthusiast focusing on optimized rendering, component design patterns, and clean architecture.",
-    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80",
-    "skills": ["React.js", "Next.js", "Redux Toolkit", "TypeScript"],
-    "rating": 4.9
-  },
-  {
-    "instructor_id": "INS-09",
-    "name": "Gregory Hayes",
-    "designation": "Executive Leadership Coach",
-    "organization": "SpeakUp Inc.",
-    "experience": "15+ Years",
-    "bio": "Transforming introverted professionals into confident speakers and corporate leaders through actionable communication strategies.",
-    "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80",
-    "skills": ["Public Speaking", "Team Leadership", "Emotional Intelligence"],
-    "rating": 4.7
-  },
-  {
-    "instructor_id": "INS-10",
-    "name": "Kevin Smith",
-    "designation": "Senior iOS Engineer",
-    "organization": "AppVerse Studios",
-    "experience": "7+ Years",
-    "bio": "Dedicated Swift developer specializing in core data, high-fidelity UI animations, and native performance optimization.",
-    "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
-    "skills": ["Swift", "SwiftUI", "CoreData", "App Store Deployment"],
-    "rating": 4.8
-  }
+    {
+        "instructor_id": "INS-01",
+        "name": "John Doe",
+        "designation": "Senior Full-Stack Developer",
+        "organization": "TechAcademy",
+        "experience": "8+ Years",
+        "bio": "Passionate about building scalable web applications and teaching modern web technologies to beginners.",
+        "avatar": "https://i.pinimg.com/1200x/63/f3/a0/63f3a0fe0c318b623d9a431e2817b515.jpg",
+        "skills": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Node.js",
+            "MongoDB"
+        ],
+        "rating": 4.8
+    },
+    {
+        "instructor_id": "INS-02",
+        "name": "Sarah Jenkins",
+        "designation": "Lead UI/UX Product Designer",
+        "organization": "Design Studio X",
+        "experience": "6+ Years",
+        "bio": "Helping companies build intuitive digital products by blending user psychology with beautiful design layouts.",
+        "avatar": "https://i.pinimg.com/736x/cf/db/2f/cfdb2ffc2643584278cc7d91a67dc908.jpg",
+        "skills": [
+            "Figma",
+            "User Research",
+            "Wireframing",
+            "Prototyping"
+        ],
+        "rating": 4.9
+    },
+    {
+        "instructor_id": "INS-03",
+        "name": "Dr. Alan Turing",
+        "designation": "Data Scientist & AI Researcher",
+        "organization": "Quantum Labs",
+        "experience": "12+ Years",
+        "bio": "Specialized in machine learning algorithms, deep learning, and predictive analytics for enterprise data.",
+        "avatar": "https://i.pinimg.com/736x/6b/55/80/6b55801e95a61be5f89e9182ccf31dda.jpg",
+        "skills": [
+            "Python",
+            "Machine Learning",
+            "TensorFlow",
+            "Pandas"
+        ],
+        "rating": 4.7
+    },
+    {
+        "instructor_id": "INS-04",
+        "name": "Emily Chen",
+        "designation": "Growth Marketing Strategist",
+        "organization": "Media Buzz",
+        "experience": "5+ Years",
+        "bio": "Expert in driving organic traffic and running high-ROI paid ad campaigns for e-commerce brands.",
+        "avatar": "https://i.pinimg.com/736x/5f/8c/92/5f8c9227a46152535b34e450adcfb803.jpg",
+        "skills": [
+            "SEO",
+            "Google Ads",
+            "Facebook Pixel",
+            "Content Strategy"
+        ],
+        "rating": 4.6
+    }
 ]
