@@ -7,12 +7,12 @@ import Image from "next/image";
 import { FaBars, FaXmark } from "react-icons/fa6";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,17 +22,22 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
- 
   const { data, isPending } = authClient.useSession();
   const user = data?.user;
 
-
+  
   const signOut = async () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
+          // সফল হলে টোস্ট দেখাবে, রাউটার পুশ করবে এবং মোবাইল মেনু বন্ধ করবে
+          toast.success("Logged out successfully!", { duration: 4000 });
           router.push("/signin");
           setIsMobileMenuOpen(false);
+        },
+        onError: () => {
+          // কোনো সমস্যা হলে এরর টোস্ট দেখাবে
+          toast.error("Something went wrong. Try again!", { duration: 4000 });
         },
       },
     });
@@ -47,8 +52,6 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-12">
-        
-  
         <div className="flex-shrink-0 relative z-[1001]">
           <Link href="/">
             <Image
@@ -120,7 +123,6 @@ const Navbar = () => {
           )}
         </div>
 
-  
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden relative z-[1001] text-white text-2xl p-2"
@@ -128,7 +130,6 @@ const Navbar = () => {
           {isMobileMenuOpen ? <FaXmark /> : <FaBars />}
         </button>
 
-       
         <div
           className={`fixed inset-0 bg-black z-[1000] flex flex-col pt-24 px-8 transition-transform duration-300 md:hidden ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -170,27 +171,22 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex flex-col items-center gap-6 mt-6 w-full">
-                
-               
                 <div className="flex flex-col items-center gap-2 bg-white/10 p-4 rounded-xl w-full justify-center">
                   {user.image ? (
-                    <Avatar src={user.image} size="lg" className="mb-1" />
+                    <Avatar src={user?.image} size="lg" className="mb-1" />
                   ) : (
-                    <p className="text-white font-bold text-xl">{user.name}</p>
+                    <p className="text-white font-bold text-xl">{user?.name}</p>
                   )}
-                  <p className="text-tiny text-slate-400">{user.email}</p>
+                  <p className="text-tiny text-slate-400">{user?.email}</p>
+                  <Button
+                    fullWidth
+                    variant="danger"
+                    onClick={signOut}
+                    className="h-12 font-bold"
+                  >
+                    Sign Out
+                  </Button>
                 </div>
-
-                <Button
-                  fullWidth
-                  color="danger"
-                  variant="flat"
-                  onClick={signOut}
-                  className="h-12 font-bold"
-                >
-                  Sign Out
-                </Button>
-                
               </div>
             )}
           </div>
