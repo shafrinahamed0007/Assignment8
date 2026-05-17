@@ -50,7 +50,7 @@ const Navbar = () => {
             <Image
               src="/logo.png"
               alt="SkillNest logo"
-              width={150}
+              width={250}
               height={40}
               priority
             />
@@ -98,7 +98,7 @@ const Navbar = () => {
                   as={Link}
                   href="/profile"
                   className="transition-transform w-8 h-8"
-                  src={user.image}
+                  src={user?.image}
                 />
               ) : (
                 <Link
