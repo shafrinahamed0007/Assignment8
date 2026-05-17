@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaBars, FaGoogle, FaXmark } from "react-icons/fa6";
+import { FaBars, FaXmark } from "react-icons/fa6";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,14 +22,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+ 
   const { data, isPending } = authClient.useSession();
   const user = data?.user;
 
-  const handleGoogleSignIn = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-    });
-  };
 
   const signOut = async () => {
     await authClient.signOut({
@@ -50,7 +47,8 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-12">
-        {/* Logo */}
+        
+  
         <div className="flex-shrink-0 relative z-[1001]">
           <Link href="/">
             <Image
@@ -63,7 +61,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 items-center text-[14px] font-medium text-slate-300">
           <Link href="/" className="hover:text-white transition-colors">
             Home
@@ -123,7 +120,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Toggle Button */}
+  
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden relative z-[1001] text-white text-2xl p-2"
@@ -131,9 +128,9 @@ const Navbar = () => {
           {isMobileMenuOpen ? <FaXmark /> : <FaBars />}
         </button>
 
-        {/* Mobile Menu Overlay */}
+       
         <div
-          className={`fixed inset-0 bg-[#030712] z-[1000] flex flex-col pt-24 px-8 transition-transform duration-300 md:hidden ${
+          className={`fixed inset-0 bg-black z-[1000] flex flex-col pt-24 px-8 transition-transform duration-300 md:hidden ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -143,7 +140,7 @@ const Navbar = () => {
                 key={item}
                 href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-xl font-medium text-slate-200 border-b border-white/5 pb-4"
+                className="text-xl font-medium text-slate-200 border-b border-white/10 pb-4"
               >
                 {item}
               </Link>
@@ -157,7 +154,7 @@ const Navbar = () => {
                   <Button
                     fullWidth
                     variant="bordered"
-                    className="text-white border-white/10 h-12"
+                    className="text-white border-white/20 h-12"
                   >
                     Sign In
                   </Button>
@@ -173,13 +170,14 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex flex-col items-center gap-6 mt-6 w-full">
-                <div className="flex flex-col items-center gap-2 bg-white/5 p-4 rounded-xl w-full justify-center">
+                
+               
+                <div className="flex flex-col items-center gap-2 bg-white/10 p-4 rounded-xl w-full justify-center">
                   {user.image ? (
                     <Avatar src={user.image} size="lg" className="mb-1" />
                   ) : (
                     <p className="text-white font-bold text-xl">{user.name}</p>
                   )}
-
                   <p className="text-tiny text-slate-400">{user.email}</p>
                 </div>
 
@@ -192,17 +190,7 @@ const Navbar = () => {
                 >
                   Sign Out
                 </Button>
-                <div className="flex items-center my-6">
-                  <div className="flex-grow border-t border-white/10"></div>
-                  <span className="mx-4 text-slate-500 text-sm">OR</span>
-                  <div className="flex-grow border-t border-white/10"></div>
-                </div>
-                <Button
-                  onClick={handleGoogleSignIn}
-                  className="w-full bg-white text-black font-semibold h-12 rounded-xl hover:bg-slate-200 transition-colors"
-                >
-                  <FaGoogle /> Sign Up with Google
-                </Button>
+                
               </div>
             )}
           </div>

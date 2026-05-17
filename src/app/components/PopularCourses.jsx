@@ -10,7 +10,7 @@ const PopularCourses = async () => {
   //   console.log("Popular Coures", popularCourses);
 
   return (
-    <div className="mt-20">
+    <div className="lg:mt-20 mt-5">
       <h2 className="text-2xl  font-bold">Popular Courses </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 ">
         {popularCourses.map((popularCourse) => (
@@ -20,7 +20,7 @@ const PopularCourses = async () => {
           />
         ))}
       </div>
-      <div className="mt-10 flex  w-full ">
+      <div className="md:mt-10 mt-5 flex  w-full ">
         <Link className="w-full flex justify-center" href={"/courses"}>
           <Button className={"w-48"}>All Courses</Button>
         </Link>
