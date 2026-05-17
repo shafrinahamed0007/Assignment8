@@ -23,9 +23,9 @@ const SignIn = () => {
     console.log(data, error);
 
     if (!error) {
-      toast.success("User Login Successfully!");
+      toast.success("User Login Successfully!", {durartion: 4000});
     } else {
-      toast.error(error.message || "User Login Failed");
+      toast.error(error.message || "User Login Failed", {durartion: 4000});
     }
   };
   const handleGoogleSignIn = async () => {

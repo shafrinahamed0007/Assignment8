@@ -17,9 +17,9 @@ export function UpdateUserModal() {
       image: images,
     });
     if (error) {
-      toast.error(error.message || "User Update Failed!");
+      toast.error(error.message || "User Update Failed!", {durartion: 4000});
     } else {
-      toast.success("User Profile successfully!");
+      toast.success("User Profile successfully!", {durartion: 4000});
     }
   };
 

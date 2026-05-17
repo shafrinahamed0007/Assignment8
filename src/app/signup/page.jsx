@@ -27,10 +27,10 @@ const SignUp = () => {
     });
 
     if (!error) {
-      toast.success("User Registration Successful!");
+      toast.success("User Registration Successful!", {durartion: 4000});
       router.push("/signin");
     } else {
-      toast.error(error.message || "User Registration Failed");
+      toast.error(error.message || "User Registration Failed", {durartion: 4000});
     }
   };
 
