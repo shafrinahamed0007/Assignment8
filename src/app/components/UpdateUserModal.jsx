@@ -19,7 +19,7 @@ export function UpdateUserModal() {
     if (error) {
       toast.error(error.message || "User Update Failed!", {durartion: 4000});
     } else {
-      toast.success("User Profile successfully!", {durartion: 4000});
+      toast.success("User Profile Update successfully!", {durartion: 4000});
     }
   };
 
