@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaBars, FaXmark } from "react-icons/fa6";
+import { FaBars, FaGoogle, FaXmark } from "react-icons/fa6";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
@@ -23,6 +23,12 @@ const Navbar = () => {
 
   const { data, isPending } = authClient.useSession();
   const user = data?.user;
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
 
   const signOut = async () => {
     await authClient.signOut({
@@ -185,6 +191,17 @@ const Navbar = () => {
                   className="h-12 font-bold"
                 >
                   Sign Out
+                </Button>
+                <div className="flex items-center my-6">
+                  <div className="flex-grow border-t border-white/10"></div>
+                  <span className="mx-4 text-slate-500 text-sm">OR</span>
+                  <div className="flex-grow border-t border-white/10"></div>
+                </div>
+                <Button
+                  onClick={handleGoogleSignIn}
+                  className="w-full bg-white text-black font-semibold h-12 rounded-xl hover:bg-slate-200 transition-colors"
+                >
+                  <FaGoogle /> Sign Up with Google
                 </Button>
               </div>
             )}
