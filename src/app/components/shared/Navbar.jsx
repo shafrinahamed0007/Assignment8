@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  Avatar,
-  Button,
-  Navbar as HeroNavbar,
-  NavbarContent,
-  NavbarItem,
-} from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaXmark } from "react-icons/fa6";
@@ -35,6 +29,7 @@ const Navbar = () => {
       fetchOptions: {
         onSuccess: () => {
           router.push("/signin");
+          setIsMobileMenuOpen(false);
         },
       },
     });
@@ -55,7 +50,7 @@ const Navbar = () => {
             <Image
               src="/logo.png"
               alt="SkillNest logo"
-              width={150} // সাইজটা একটু এডজাস্ট করে নিন
+              width={150}
               height={40}
               priority
             />
@@ -74,7 +69,9 @@ const Navbar = () => {
             Profile
           </Link>
 
-          {!user ? (
+          {isPending ? (
+            <div className="w-8 h-8 rounded-full bg-white/10 animate-pulse ml-4" />
+          ) : !user ? (
             <div className="flex gap-4 ml-4">
               <Link href="/signin">
                 <Button
@@ -96,14 +93,23 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex items-center gap-4 border-l border-white/10 pl-4">
-              <Avatar
-                
-                as={Link}
-                href="/profile"
-                className="transition-transform w-8 h-8"
-                src={user.image || ""}
-                name={user.name?.[0]}
-              />
+              {user.image ? (
+                <Avatar
+                  as={Link}
+                  href="/profile"
+                  className="transition-transform w-8 h-8"
+                  src={user.image}
+                />
+              ) : (
+                <Link
+                  href="/profile"
+                  className="text-white hover:text-purple-400 font-medium text-sm transition-colors max-w-[120px] truncate"
+                  title={user.name}
+                >
+                  {user.name}
+                </Link>
+              )}
+
               <Button size="sm" color="danger" variant="flat" onClick={signOut}>
                 Sign Out
               </Button>
@@ -137,7 +143,9 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {!user ? (
+            {isPending ? (
+              <div className="text-white">Loading...</div>
+            ) : !user ? (
               <div className="flex flex-col gap-4 mt-6">
                 <Link href="/signin" onClick={() => setIsMobileMenuOpen(false)}>
                   <Button
@@ -158,23 +166,21 @@ const Navbar = () => {
                 </Link>
               </div>
             ) : (
-              <div className="flex flex-col items-center gap-6 mt-6">
-                <div className="flex items-center gap-3">
-                  <Avatar
-                    src={user.image || ""}
-                    name={user.name?.[0]}
-                    size="lg"
-                   
-                  />
-                  <div className="text-left">
-                    <p className="text-white font-bold">{user.name}</p>
-                    <p className="text-tiny text-slate-400">{user.email}</p>
-                  </div>
+              <div className="flex flex-col items-center gap-6 mt-6 w-full">
+                <div className="flex flex-col items-center gap-2 bg-white/5 p-4 rounded-xl w-full justify-center">
+                  {user.image ? (
+                    <Avatar src={user.image} size="lg" className="mb-1" />
+                  ) : (
+                    <p className="text-white font-bold text-xl">{user.name}</p>
+                  )}
+
+                  <p className="text-tiny text-slate-400">{user.email}</p>
                 </div>
+
                 <Button
                   fullWidth
                   color="danger"
-                  variant="danger"
+                  variant="flat"
                   onClick={signOut}
                   className="h-12 font-bold"
                 >
